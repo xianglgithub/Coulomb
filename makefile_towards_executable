@@ -1,0 +1,23 @@
+OBJS = ch3i.o Explosion.o coulomb.o
+CC = g++
+DEBUG = -g
+CFLAGS = -Wall -c -std=c++11 $(DEBUG)
+LFLAGS = -Wall $(DEBUG)
+INCLUDES = -I/usr/include/
+LDFLAGS = -L/usr/lib64
+LOADLIBES = -lgsl -lgslcblas -lm
+
+p1 : $(OBJS)
+	$(CC) $(LFLAGS) $(OBJS) $(INCLUDES) $(LDFLAGS) $(LOADLIBES) -o p1
+
+ch3i.o : ch3i.cpp Explosion.h
+	$(CC) $(CFLAGS) $(INCLUDES) ch3i.cpp
+	
+Explosion.o : Explosion.h coulomb.h 
+	$(CC) $(CFLAGS) $(INCLUDES)  Explosion.cpp 
+
+coulomb.o : coulomb.h 
+	$(CC) $(CFLAGS) $(INCLUDES)  coulomb.cpp 
+
+clean:
+	\rm *.o *~ p1

@@ -1,0 +1,16 @@
+CC = g++
+DEBUG = -g -I/usr/include
+CFLAGS = -m64 -Wall -fPIC -std=c++11 -c $(DEBUG)
+    
+libCoulombCH3I.a: Explosion.o coulomb.o
+	ar ru $@ $^
+	ranlib $@
+	
+Explosion.o : Explosion.h coulomb.h 
+	$(CC) $(CFLAGS)  Explosion.cpp 
+
+coulomb.o : coulomb.h
+	$(CC) $(CFLAGS)  coulomb.cpp 
+
+clean:
+	\rm *.o *.a
