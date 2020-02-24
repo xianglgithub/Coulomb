@@ -25,11 +25,6 @@ cg_vec = ep.getCG();
 
    std::cout<<"Y:";
     
-   for (int i=0; i<y_vec.size();++i)
-   {
-       std::cout<<y_vec[i]<<sep;
-   }
-    std::cout<<std::endl;
     
     
 return 0;
